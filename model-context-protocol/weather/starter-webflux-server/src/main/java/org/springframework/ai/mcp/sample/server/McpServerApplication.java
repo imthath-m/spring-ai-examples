@@ -7,6 +7,7 @@ import org.springframework.ai.tool.method.MethodToolCallbackProvider;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.*;
 
 @SpringBootApplication
 public class McpServerApplication {
@@ -24,11 +25,12 @@ public class McpServerApplication {
 	}
 
 	@Bean
-	public ToolCallback toUpperCase() {
-		return FunctionToolCallback.builder("toUpperCase", (TextInput input) -> input.input().toUpperCase())
+	public ToolCallback toLowerCase() {
+		return FunctionToolCallback.builder("toLowerCase", (TextInput input) -> input.input().toLowerCase())
 			.inputType(TextInput.class)
-			.description("Put the text to upper case")
+			.description("Put the text to lower case")
 			.build();
 	}
 
 }
+
